@@ -1,13 +1,16 @@
 const beeramid = (bonus, price) => {
-  let number_of_beer = bonus / price
-  let total = 0
-  let myBear = 0
-  let counter = 1
-  while (total < number_of_beer) {
-    total += counter * counter
-    counter += 1
-    myBear += 1
+  if(bonus < price) return 0
+  let numberOfBeer = bonus / price
+  let totalBeer = 0
+  let levelCounter = 1
+  while (true) {
+    totalBeer += (levelCounter ** 2)
+    let nextLevel = (totalBeer + ((levelCounter + 1) ** 2))
+    if(nextLevel > numberOfBeer){
+      break
+    }
+    levelCounter += 1
   }
-  console.log(myBear - 1)
+    return levelCounter
 }
-console.log(beeramid(1500, 2))
+console.log(beeramid(5000, 3))
